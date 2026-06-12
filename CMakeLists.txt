@@ -5,7 +5,7 @@ project(sorting_visualizer)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(raylib)
+find_package(raylib REQUIRED)
 
 add_executable(sorting_visualizer main.cpp)
 

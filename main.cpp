@@ -9,9 +9,9 @@ class SortingVisualizer {
 public:
     SortingVisualizer() {
         InitWindow(WIDTH, HEIGHT, "SortingVisualizer");
-        SetTargetFPS(600);
+        SetTargetFPS(144);
 
-        std::mt19937 generator {};
+        std::mt19937 generator { std::random_device{} () };
         std::uniform_real_distribution<float> range { 0.0f, 1.0f };
         for (size_t i {}; i < MAX_AMT; i++) {
             arr.push_back(range(generator));
@@ -24,12 +24,14 @@ public:
             PollInputEvents();
 
             BeginDrawing();
+
+            ClearBackground(BLACK);
+            
             draw_array();
             compared.clear();
             sort_step();
             EndDrawing();
 
-            ClearBackground(BLACK);
         }
     }
 
@@ -79,4 +81,6 @@ private:
 int main() {
     SortingVisualizer instance {};
     instance.main();
+
+    CloseWindow();
 }
